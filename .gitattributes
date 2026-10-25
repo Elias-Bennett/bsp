@@ -1,0 +1,15 @@
+# 统一换行：脚本在 Linux 板子上必须是 LF，否则会出现
+#   /bin/sh: ./collect.sh: bad interpreter: No such file or directory
+* text=auto eol=lf
+
+*.sh text eol=lf
+*.py text eol=lf
+
+# 二进制一律不转换
+*.dtb binary
+*.dtbo binary
+*.bin binary
+*.img binary
+*.png binary
+*.jpg binary
+*.gz binary

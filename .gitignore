@@ -1,0 +1,11 @@
+# 日志目录（可能很大，也可能含板子私有信息，不要提交）
+logs/
+*.log
+*.log.meta.json
+!examples/*.log
+bsp.conf
+
+# Python
+__pycache__/
+*.pyc
+.venv/

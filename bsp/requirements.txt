@@ -1,0 +1,7 @@
+# bspctl 依赖
+# 最小集（只跑日志分析 boottime/oops/diff 其实只需要标准库）
+pyserial>=3.5
+
+# 需要 MCP 工具化时再装（bsp_mcp.py）
+# pip install "mcp[cli]>=1.2"
+mcp>=1.2.0

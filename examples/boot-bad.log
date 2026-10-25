@@ -1,0 +1,51 @@
+U-Boot 2023.10 (Oct 20 2025 - 10:12:33 +0800)
+
+DRAM:  2 GiB
+MMC:   mmc@f0000000: 0
+Loading Environment from MMC... OK
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 6.1.55 (bsp@ci) (aarch64-linux-gnu-gcc 12.2.0) #1 SMP PREEMPT
+[    0.000000] Machine model: MyVendor MyBoard
+[    0.108000] console [ttyS0] enabled
+[    0.203000] mmc0: SDHCI controller on f0000000.mmc [f0000000.mmc] using ADMA
+[    0.245000] mmc0: new HS200 MMC card at address 0001
+[    0.260000] mmcblk0: mmc0:0001 8GTF4R 7.28 GiB
+[    0.301000] i2c 1-0048: probe ok
+[    0.312000] mydev 1-0050: probe failed with error -16
+[    0.313000] mydev: probe of 1-0050 failed with error -16
+[    0.355000] dwc3 f1000000.usb: dr_mode: peripheral
+[    0.412000] Freeing unused kernel memory: 1024K
+[    0.430000] Run /sbin/init as init process
+[    1.500000] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000010
+[    1.500100] Mem abort info:
+[    1.500110]   ESR = 0x0000000096000004
+[    1.500120]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    1.500130]   SET = 0, FnV = 0
+[    1.500140]   EA = 0, S1PTW = 0
+[    1.500200] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000008a1e000
+[    1.500300] [0000000000000010] pgd=0000000000000000, p4d=0000000000000000
+[    1.500400] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+[    1.500500] Modules linked in: mydev
+[    1.500600] CPU: 2 PID: 412 Comm: myapp Tainted: G           O  6.1.55 #1
+[    1.500700] Hardware name: MyVendor MyBoard (DT)
+[    1.500800] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.500900] pc : mydev_read+0x2c/0x80 [mydev]
+[    1.501000] lr : mydev_read+0x24/0x80 [mydev]
+[    1.501100] sp : ffff8000080b3d80
+[    1.501200] x29: ffff8000080b3d80 x28: ffff00000a2b0000 x27: 0000000000000000
+[    1.501300] x26: ffff00000a2b0c00 x25: ffff8000080b3e58 x24: 0000000000000001
+[    1.501400] Call trace:
+[    1.501500]  mydev_read+0x2c/0x80 [mydev]
+[    1.501600]  vfs_read+0xbc/0x1a0
+[    1.501700]  ksys_read+0x74/0x110
+[    1.501800]  __arm64_sys_read+0x20/0x30
+[    1.501900]  invoke_syscall+0x4c/0x120
+[    1.502000] Code: aa0003f3 f9400260 b4000080 f9400800 (f9400800)
+[    1.502100] ---[ end trace 0000000000000000 ]---
+[    1.502200] Kernel panic - not syncing: Fatal exception
+[    1.502300] SMP: stopping secondary CPUs
+[    1.502400] Kernel Offset: disabled
+[    1.502500] CPU features: 0x00000,00000000,00000000
+[    1.502600] end Kernel panic - not syncing: Fatal exception

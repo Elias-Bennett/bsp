@@ -1,0 +1,80 @@
+### bspdump v1  profile=boot
+### read-only collection
+===BSPDUMP-SECTION:uname===
+Linux myboard 6.1.55 #1 SMP PREEMPT Fri Oct 24 09:12:33 CST 2025 aarch64
+===BSPDUMP-END:uname size=78===
+===BSPDUMP-SECTION:cmdline===
+console=ttyS0,115200 earlycon root=/dev/mmcblk0p2 rootwait rw
+===BSPDUMP-END:cmdline size=72===
+===BSPDUMP-SECTION:dmesg-err===
+[    1.980123] mydev 1-0050: probe ok
+[    2.310045] dwc3 f1000000.usb: dr_mode: peripheral
+===BSPDUMP-END:dmesg-err size=104===
+===BSPDUMP-SECTION:model===
+MyVendor MyBoard
+myvendor,myboard myvendor,soc1234
+===BSPDUMP-END:model size=46===
+===BSPDUMP-SECTION:uptime===
+42.18 120.33
+===BSPDUMP-END:uptime size=14===
+===BSPDUMP-SECTION:interrupts===
+           CPU0       CPU1
+ 11:       1204          0     GICv3  30 Level     arch_timer
+ 23:         88          0     GICv3  42 Level     mmc0
+ 45:          3          0     GICv3  60 Level     i2c1
+IPI0:       512        498       Rescheduling interrupts
+===BSPDUMP-END:interrupts size=248===
+===BSPDUMP-SECTION:mounts===
+/dev/mmcblk0p2 on / type ext4 (rw,relatime)
+devtmpfs on /dev type devtmpfs (rw,relatime)
+===BSPDUMP-END:mounts size=90===
+===BSPDUMP-SECTION:deferred===
+===BSPDUMP-END:deferred size=0===
+===BSPDUMP-SECTION:clk===
+                                  enable  prepare  protect
+   clock                          count    count    count        rate   accuracy phase
+--------------------------------------------------------------------------------
+   clk_24m                            3        3        0    24000000          0     0
+      uart0_clk                       2        2        0    24000000          0     0
+      mmc0_clk                        1        1        0   200000000          0     0
+   clk_pll_audio                      0        0        0   786432000          0     0
+===BSPDUMP-END:clk size=430===
+===BSPDUMP-SECTION:regulator===
+regulator                      use open bypass voltage current     min     max
+--------------------------------------------------------------------------------
+ vcc_3v3                          5    0      0  3300mV     0mV  3300mV  3300mV
+ vcc_1v8                          3    0      0  1800mV     0mV  1800mV  1800mV
+===BSPDUMP-END:regulator size=262===
+===BSPDUMP-SECTION:thermal===
+/sys/class/thermal/thermal_zone0 type=soc-thermal temp=48700
+===BSPDUMP-END:thermal size=58===
+===BSPDUMP-SECTION:dmesg===
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 6.1.55 #1 SMP PREEMPT
+[    0.000000] Machine model: MyVendor MyBoard
+[    0.108000] console [ttyS0] enabled
+[    0.203000] mmc0: SDHCI controller on f0000000.mmc [f0000000.mmc] using ADMA
+[    0.245000] mmc0: new HS200 MMC card at address 0001
+[    0.301000] i2c 1-0048: probe ok
+[    0.312000] mydev 1-0050: probe ok
+[    0.412000] Freeing unused kernel memory: 1024K
+[    0.430000] Run /sbin/init as init process
+[    1.203000] rk_gmac-dwmac f2000000.ethernet: Link is Up - 1Gbps/Full
+===BSPDUMP-END:dmesg size=612===
+===BSPDUMP-MANIFEST===
+uname 78
+cmdline 72
+dmesg-err 104
+model 46
+uptime 14
+interrupts 248
+mounts 90
+deferred 0
+clk 430
+regulator 262
+thermal 58
+dmesg 612
+===BSPDUMP-FOOTER===
+profile=boot file=/tmp/bspdump-good.txt
+payload-sha256=0000000000000000000000000000000000000000000000000000000000000000
+===BSPDUMP-END-OF-DUMP===

@@ -1,0 +1,64 @@
+# bspctl 配置样例 —— 复制成 bsp.conf 后按你的板子改
+#
+#   1. 先把 [serial] port 改对（拷到 Windows 是 COMx，Linux 是 /dev/ttyUSB0）
+#   2. 其余留空也能跑：只有 log / boottime / oops / diff 不需要额外配置
+#   3. 烧写和复位是可选能力，配了才有 agent 闭环
+
+[serial]
+port = COM5
+baud = 115200
+# 行尾: crlf | cr | lf | none
+eol = crlf
+logdir = logs
+# 可选: 打开串口时强制 DTR/RTS 电平，某些板子需要 (0 或 1)
+# dtr = 0
+# rts = 0
+
+[board]
+name = myarm
+# SSH 巡检用；配了免密之后 board_ssh 比串口快得多
+ip = 192.168.1.100
+user = root
+ssh_port = 22
+
+[build]
+# 例 1: Buildroot
+# cmd = make -C /home/me/bsp/buildroot O=/home/me/bsp/output BR2_EXTERNAL=/home/me/bsp/br2-external myarm_defconfig all
+# 例 2: 内核单独重编
+# cmd = make -C /home/me/bsp/linux ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j16
+# 例 3: Windows 上走 WSL
+# cmd = wsl -e bash -lc "cd /mnt/f/bsp && make -C buildroot O=output myarm_defconfig all"
+cmd =
+logdir = logs/build
+
+[flash]
+# mode: none | sdcard | cmd
+mode = none
+image = output/images/sdcard.img
+# sdcard 模式（仅 Linux，会做根设备/挂载检查，必须 --yes）
+# device = /dev/sdb
+# cmd 模式：任意烧写工具，{image} 会被替换
+#   Rockchip:  cmd = rkdeveloptool wl 0 {image}
+#   NXP i.MX:  cmd = uuu -b emmc_all {image}
+#   Allwinner: cmd = sunxi-fel -p spsr {image}
+#   fastboot:  cmd = fastboot flash boot {image}
+#   USB 烧录器: cmd = /opt/myprog/prog.sh {image}
+cmd =
+
+[reset]
+# mode: none | uhubctl | relay | gpio | cmd
+# uhubctl 是最便宜可靠的做法：给板子供电的那个 USB HUB 口做掉电重启
+#   sudo apt install uhubctl ; uhubctl   # 先列出 hub 和端口
+mode = none
+# uhubctl 模式
+# hub = 1-1
+# port = 2
+# gpio 模式（比如树莓派控制继电器）
+# cmd = gpioset gpiochip0 17=1; sleep 3; gpioset gpiochip0 17=0
+# cmd 模式（任意脚本，{delay} 会被替换）
+# cmd = /opt/myprog/power_cycle.sh {delay}
+# relay 模式：串口控制的 USB 继电器板，写十六进制字节串
+# relay_port = COM9
+# relay_on  =
+# relay_off =
+delay = 6

@@ -1,0 +1,30 @@
+U-Boot 2023.10 (Oct 20 2025 - 10:12:33 +0800)
+
+DRAM:  2 GiB
+MMC:   mmc@f0000000: 0
+Loading Environment from MMC... OK
+In:    serial
+Out:   serial
+Err:   serial
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 6.1.55 (bsp@ci) (aarch64-linux-gnu-gcc 12.2.0) #1 SMP PREEMPT
+[    0.000000] Machine model: MyVendor MyBoard
+[    0.000000] Memory: 1954320K/2097152K available
+[    0.108000] console [ttyS0] enabled
+[    0.126000] clocksource: arch_sys_counter: mask 0xffffffffff
+[    0.203000] mmc0: SDHCI controller on f0000000.mmc [f0000000.mmc] using ADMA
+[    0.245000] mmc0: new HS200 MMC card at address 0001
+[    0.260000] mmcblk0: mmc0:0001 8GTF4R 7.28 GiB
+[    0.268000]  mmcblk0: p1 p2
+[    0.301000] i2c 1-0048: probe ok
+[    0.312000] mydev 1-0050: probe ok
+[    0.355000] dwc3 f1000000.usb: dr_mode: peripheral
+[    0.412000] Freeing unused kernel memory: 1024K
+[    0.430000] Run /sbin/init as init process
+[    0.451000] systemd[1]: Started Journal Service.
+[    1.203000] rk_gmac-dwmac f2000000.ethernet: Link is Up - 1Gbps/Full
+[    1.500000] mydev 1-0050: probe ok
+
+MyBoard login:

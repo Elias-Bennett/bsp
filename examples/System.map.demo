@@ -1,0 +1,6 @@
+﻿ffff800010000000 T _text
+ffff800010050000 T start_kernel
+ffff800010050120 T rest_init
+ffff800010081000 t mydev_read
+ffff800010082000 t mydev_probe
+ffff8000100827ff t mydev_release
